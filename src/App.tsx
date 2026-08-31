@@ -8,7 +8,6 @@ import {
   type HistoryItem,
 } from './components/AgentSidebar';
 import { SearchOverlay } from './components/SearchOverlay';
-import { CapabilitiesView } from './components/CapabilitiesView';
 import { FileLibraryView } from './components/FileLibraryView';
 import {
   SettingsView,
@@ -34,15 +33,13 @@ import {
   saveConversationRecords,
   type ConversationRecord,
 } from './runtime/conversationStore';
-import { toSkillInvocation, type AgentSkill } from './runtime/skills';
-
 export interface AppProps {
   config: AgentTemplateConfig;
 }
 
 const SETTINGS_STORAGE_KEY = 'agent-template-runtime-settings';
 
-type ActivePage = 'chat' | 'discover' | 'files' | 'settings';
+type ActivePage = 'chat' | 'files' | 'settings';
 
 const CHAT_INPUT_GLOW_COLORS =
   'var(--app-chat-input-glow-1),var(--app-chat-input-glow-2),var(--app-chat-input-glow-3)';
@@ -436,12 +433,6 @@ export function App({ config: initialConfig }: AppProps) {
     [ensureActiveConversation, handleSecurityNotice, securitySettings, selectedSkill, send],
   );
 
-  const handleUseSkill = useCallback((skill: AgentSkill) => {
-    const invocation = toSkillInvocation(skill);
-    setSelectedSkill(invocation);
-    setActivePage('chat');
-  }, []);
-
   const handleSelectSkillInvocation = useCallback((skill: SendMessageOptions['skillInvocation']) => {
     setSelectedSkill(skill);
   }, []);
@@ -545,10 +536,6 @@ export function App({ config: initialConfig }: AppProps) {
   }, []);
 
   const renderMainContent = () => {
-    if (activePage === 'discover') {
-      return <CapabilitiesView onOpenFiles={() => setActivePage('files')} onUseSkill={handleUseSkill} />;
-    }
-
     if (activePage === 'files') {
       return (
         <FileLibraryView

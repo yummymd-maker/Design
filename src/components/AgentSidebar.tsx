@@ -14,10 +14,10 @@ export interface AgentSidebarProps {
   historyItems: HistoryItem[];
   capabilities: CapabilitiesConfig;
   userName?: string;
-  activePage?: 'chat' | 'discover' | 'files' | 'settings';
+  activePage?: 'chat' | 'files' | 'settings';
   collapsed?: boolean;
   activeHistoryId?: string;
-  onNavigate?: (page: 'chat' | 'discover' | 'files' | 'settings') => void;
+  onNavigate?: (page: 'chat' | 'files' | 'settings') => void;
   onToggleCollapsed?: (collapsed: boolean) => void;
   onHistoryClick?: (id: string) => void;
   onNewChat?: () => void;
@@ -177,14 +177,6 @@ export function AgentSidebar({
               搜索
             </ve-sidebar-item>
           )}
-          <ve-sidebar-item
-            type="primary"
-            selected={activePage === 'discover'}
-            onClick={() => onNavigate?.('discover')}
-          >
-            <ve-icon slot="prefix" name="compass-round-1" size="20" />
-            发现
-          </ve-sidebar-item>
           <ve-sidebar-item
             type="primary"
             selected={activePage === 'files'}
