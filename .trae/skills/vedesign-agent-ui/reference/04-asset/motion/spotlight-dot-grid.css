@@ -1,0 +1,55 @@
+/**
+ * Spotlight Dot Grid —— 漂浮光斑点阵 · 样式
+ *
+ * 配合 spotlight-dot-grid.js 使用。
+ * canvas 本身用 absolute + inset:0 铺满 host,
+ * 本文件主要提供 .ved-spotlight-host 工具类(给 host 加 position:relative)
+ * 和 .ved-spotlight-canvas 容器规范。
+ *
+ * 触发方式:
+ *   - 静态 + 自动:HTML 上加 [data-spotlight-dots],页面 ready 时 autoInitSpotlightDotGrids()
+ *   - 手动:initSpotlightDotGrid(host, opts)
+ */
+
+/* ============================================================
+ * canvas 容器
+ * ============================================================ */
+.ved-spotlight-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* 继承宿主圆角,canvas 被圆角裁剪 */
+  border-radius: inherit;
+  /* z-index 1:盖在 host 自身背景上,但仍在 host 内容层之下 */
+  z-index: 1;
+}
+
+.ved-spotlight-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* canvas 默认不参与文档流交互 */
+  pointer-events: none;
+}
+
+/* ============================================================
+ * 工具类:跟宿主 host 的关系
+ *
+ * host 必须 position:relative + overflow:hidden(让 canvas 不溢出圆角)。
+ * 已经设过的话本类可以省略。
+ * ============================================================ */
+.ved-spotlight-host {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+ * 宿主内容层
+ *
+ * 因为 canvas z-index:1,host 自身内容应该 z-index:2 或更高,
+ * 否则会被 canvas 盖住。也可以直接给内容套一层 .ved-spotlight-content。
+ * ============================================================ */
+.ved-spotlight-content {
+  position: relative;
+  z-index: 2;
+}

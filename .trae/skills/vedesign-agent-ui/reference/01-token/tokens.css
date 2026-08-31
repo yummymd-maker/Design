@@ -1,0 +1,944 @@
+/* Color Tokens
+ * Source: Lark wiki RXDPwFkg4imk1EkP5LRcCUc4nuf (vedesign-agent-color)
+ * Format: OKLCH (hex preserved in comments)
+ *
+ * Structure:
+ *   1. Primitive Tokens — 14 palettes × 11 steps
+ *   2. Semantic Alias — status palettes (success/warning/danger/info)
+ *   3. Semantic Tokens — background / text / border
+ *   4. Interaction State Rules — hover / pressed / disabled
+ *   5. Emphasis Tokens — brand & interaction priority
+ *   6. Status Feedback Tokens — success / warning / danger / info
+ */
+
+:root {
+  /* ========================================
+   * Primitive Tokens - Gray (Primary)
+   * 以 gray 为主色阶，600 对齐当前 gray-900
+   * ======================================== */
+  --color-primary-50: oklch(0.969 0.0093 286.2);  /* #f4f4fb */
+  --color-primary-100: oklch(0.943 0.0134 286.1); /* #ebebf5 */
+  --color-primary-200: oklch(0.907 0.0162 286.1); /* #dfdfeb */
+  --color-primary-300: oklch(0.866 0.0206 289.0); /* #d2d1e0 */
+  --color-primary-400: oklch(0.784 0.0169 289.8); /* #b8b7c3 */
+  --color-primary-500: oklch(0.341 0.0156 290.6); /* #383740 */
+  --color-primary-600: oklch(0.241 0.0076 285.8); /* #1f1f23 */
+  --color-primary-700: oklch(0.174 0.0061 285.7); /* #101013 */
+  --color-primary-800: oklch(0.140 0.0058 285.6); /* #0c0c10 */
+  --color-primary-900: oklch(0.108 0.0053 285.5); /* #08080c */
+  --color-primary-950: oklch(0.080 0.0048 285.4); /* #050507 */
+
+  /* ========================================
+   * Primitive Tokens - Brand-blue (Primary)
+   * ======================================== */
+  --color-blue-50: oklch(0.977 0.0108 256.7);  /* #f3f8ff */
+  --color-blue-100: oklch(0.959 0.0195 260.2); /* #eaf2ff */
+  --color-blue-200: oklch(0.904 0.0464 262.5); /* #cfe0ff */
+  --color-blue-300: oklch(0.815 0.0929 259.6); /* #9fc4ff */
+  --color-blue-400: oklch(0.694 0.1611 259.5); /* #5d9bff */
+  --color-blue-500: oklch(0.608 0.2128 261.1); /* #2f79ff */
+  --color-blue-600: oklch(0.562 0.2412 262.2); /* #1664ff */
+  --color-blue-700: oklch(0.483 0.2266 263.2); /* #0d4bdb */
+  --color-blue-800: oklch(0.422 0.1999 264.1); /* #103cb8 */
+  --color-blue-900: oklch(0.369 0.1542 264.0); /* #12358f */
+  --color-blue-950: oklch(0.273 0.1058 265.2); /* #0d215a */
+
+  /* ========================================
+   * Primitive Tokens - Brand-Cyan
+   * ======================================== */
+  --color-cyan-50: oklch(0.988 0.0127 202.9);  /* #f2feff */
+  --color-cyan-100: oklch(0.972 0.0294 204.5); /* #e0fcff */
+  --color-cyan-200: oklch(0.941 0.0600 205.3); /* #bdf8ff */
+  --color-cyan-300: oklch(0.889 0.1057 208.3); /* #7deeff */
+  --color-cyan-400: oklch(0.823 0.1452 214.7); /* #00dcff */
+  --color-cyan-500: oklch(0.771 0.1446 223.9); /* #00c7f8 */
+  --color-cyan-600: oklch(0.710 0.1432 231.0); /* #00b0ea */
+  --color-cyan-700: oklch(0.633 0.1354 235.6); /* #0095d0 */
+  --color-cyan-800: oklch(0.544 0.1156 235.1); /* #0079a9 */
+  --color-cyan-900: oklch(0.456 0.0935 232.4); /* #005f82 */
+  --color-cyan-950: oklch(0.341 0.0686 230.8); /* #003e55 */
+
+  /* ========================================
+   * Primitive Tokens - Brand-Purple
+   * ======================================== */
+  --color-purple-50: oklch(0.975 0.0134 295.3);  /* #f7f5ff */
+  --color-purple-100: oklch(0.950 0.0272 297.3); /* #f0ebff */
+  --color-purple-200: oklch(0.891 0.0592 294.8); /* #ddd4ff */
+  --color-purple-300: oklch(0.794 0.1142 292.7); /* #beaeff */
+  --color-purple-400: oklch(0.677 0.1828 288.8); /* #967fff */
+  --color-purple-500: oklch(0.596 0.2257 280.8); /* #6e61ff */
+  --color-purple-600: oklch(0.546 0.2381 278.7); /* #5c4ef5 */
+  --color-purple-700: oklch(0.463 0.2242 277.7); /* #4636d1 */
+  --color-purple-800: oklch(0.374 0.1928 276.8); /* #3122a3 */
+  --color-purple-900: oklch(0.282 0.1474 278.1); /* #20126f */
+  --color-purple-950: oklch(0.208 0.1048 281.3); /* #140845 */
+
+  /* ========================================
+   * Primitive Tokens - Brand-Yellow
+   * ======================================== */
+  --color-yellow-50: oklch(0.993 0.0107 95.2);  /* #fffdf5 */
+  --color-yellow-100: oklch(0.987 0.0227 96.0); /* #fffbea */
+  --color-yellow-200: oklch(0.943 0.1109 99.3); /* #feee95 */
+  --color-yellow-300: oklch(0.894 0.1526 97.4); /* #f8dc56 */
+  --color-yellow-400: oklch(0.839 0.1662 92.7); /* #f0c61f */
+  --color-yellow-500: oklch(0.774 0.1557 87.8); /* #dfae10 */
+  --color-yellow-600: oklch(0.679 0.1393 84.1); /* #c08f00 */
+  --color-yellow-700: oklch(0.614 0.1264 83.0); /* #a97c00 */
+  --color-yellow-800: oklch(0.539 0.1106 84.6); /* #8c6800 */
+  --color-yellow-900: oklch(0.457 0.0936 84.9); /* #6f5200 */
+  --color-yellow-950: oklch(0.358 0.0734 85.4); /* #4e3900 */
+
+  /* ========================================
+   * Primitive Tokens - Red
+   * ======================================== */
+  --color-red-50: oklch(0.980 0.0098 25.1);  /* #fff6f5 */
+  --color-red-100: oklch(0.958 0.0209 24.8); /* #ffecea */
+  --color-red-200: oklch(0.902 0.0510 22.6); /* #ffd2cf */
+  --color-red-300: oklch(0.809 0.1079 24.6); /* #ffa59e */
+  --color-red-400: oklch(0.695 0.1739 26.2); /* #f66a61 */
+  --color-red-500: oklch(0.612 0.2061 28.3); /* #e53d33 */
+  --color-red-600: oklch(0.565 0.2162 29.0); /* #d82018 */
+  --color-red-700: oklch(0.504 0.1923 28.8); /* #b91a14 */
+  --color-red-800: oklch(0.430 0.1636 28.4); /* #951310 */
+  --color-red-900: oklch(0.346 0.1280 26.8); /* #6d0e0f */
+  --color-red-950: oklch(0.251 0.0883 25.6); /* #430809 */
+
+  /* ========================================
+   * Primitive Tokens - Orange
+   * ======================================== */
+  --color-orange-50: oklch(0.983 0.0110 63.4);  /* #fff8f2 */
+  --color-orange-100: oklch(0.964 0.0219 58.8); /* #fff0e5 */
+  --color-orange-200: oklch(0.907 0.0608 61.3); /* #ffd8b8 */
+  --color-orange-300: oklch(0.841 0.1075 59.7); /* #ffba82 */
+  --color-orange-400: oklch(0.771 0.1590 57.0); /* #ff973f */
+  --color-orange-500: oklch(0.742 0.1794 54.2); /* #ff8618 */
+  --color-orange-600: oklch(0.723 0.1897 50.5); /* #ff7a00 */
+  --color-orange-700: oklch(0.648 0.1708 50.2); /* #dd6800 */
+  --color-orange-800: oklch(0.560 0.1463 50.8); /* #b55500 */
+  --color-orange-900: oklch(0.454 0.1153 52.9); /* #864000 */
+  --color-orange-950: oklch(0.330 0.0830 53.8); /* #552700 */
+
+  /* ========================================
+   * Primitive Tokens - Green (亮色)
+   * ======================================== */
+  --color-green-50: oklch(0.983 0.0123 157.0);  /* #f3fcf6 */
+  --color-green-100: oklch(0.965 0.0214 158.6); /* #e8f8ee */
+  --color-green-200: oklch(0.916 0.0553 155.6); /* #c7efd4 */
+  --color-green-300: oklch(0.844 0.1025 154.5); /* #95e0ae */
+  --color-green-400: oklch(0.750 0.1545 151.2); /* #56c97a */
+  --color-green-500: oklch(0.682 0.1703 150.3); /* #2db55d */
+  --color-green-600: oklch(0.627 0.1699 149.2); /* #16a34a */
+  --color-green-700: oklch(0.527 0.1396 149.7); /* #12803b */
+  --color-green-800: oklch(0.440 0.1116 150.9); /* #0f6330 */
+  --color-green-900: oklch(0.361 0.0874 151.9); /* #0c4a25 */
+  --color-green-950: oklch(0.264 0.0601 152.6); /* #072d16 */
+
+  /* ========================================
+   * Primitive Tokens - Teal
+   * ======================================== */
+  --color-teal-50: oklch(0.983 0.0106 189.8);  /* #f2fcfb */
+  --color-teal-100: oklch(0.965 0.0201 189.2); /* #e5f8f6 */
+  --color-teal-200: oklch(0.913 0.0478 188.2); /* #bfede8 */
+  --color-teal-300: oklch(0.840 0.0857 186.3); /* #86ddd3 */
+  --color-teal-400: oklch(0.745 0.1161 184.3); /* #3dc4b5 */
+  --color-teal-500: oklch(0.679 0.1174 182.5); /* #18af9e */
+  --color-teal-600: oklch(0.600 0.1038 184.7); /* #0d9488 */
+  --color-teal-700: oklch(0.507 0.0864 186.4); /* #0b756d */
+  --color-teal-800: oklch(0.422 0.0711 185.5); /* #0a5a53 */
+  --color-teal-900: oklch(0.346 0.0570 186.1); /* #08433e */
+  --color-teal-950: oklch(0.251 0.0399 184.1); /* #052824 */
+
+  /* ========================================
+   * Primitive Tokens - Moss
+   * ======================================== */
+  --color-moss-50: oklch(0.981 0.0110 123.5);  /* #f7faf2 */
+  --color-moss-100: oklch(0.962 0.0218 121.0); /* #f0f5e5 */
+  --color-moss-200: oklch(0.910 0.0529 120.3); /* #dce7c0 */
+  --color-moss-300: oklch(0.829 0.0956 120.7); /* #bed18a */
+  --color-moss-400: oklch(0.732 0.1366 123.1); /* #98b64d */
+  --color-moss-500: oklch(0.654 0.1411 123.8); /* #7f9e2e */
+  --color-moss-600: oklch(0.589 0.1346 124.9); /* #6b8a1f */
+  --color-moss-700: oklch(0.501 0.1135 124.8); /* #556e18 */
+  --color-moss-800: oklch(0.422 0.0931 125.0); /* #425614 */
+  --color-moss-900: oklch(0.350 0.0749 124.6); /* #32410f */
+  --color-moss-950: oklch(0.260 0.0526 123.4); /* #1f2808 */
+
+  /* ========================================
+   * Primitive Tokens - Pink
+   * ======================================== */
+  --color-pink-50: oklch(0.979 0.0125 345.5);  /* #fff5fa */
+  --color-pink-100: oklch(0.957 0.0262 347.1); /* #ffeaf4 */
+  --color-pink-200: oklch(0.904 0.0597 348.5); /* #ffd0e6 */
+  --color-pink-300: oklch(0.826 0.1141 351.1); /* #ffa7cf */
+  --color-pink-400: oklch(0.740 0.1823 353.9); /* #ff73b3 */
+  --color-pink-500: oklch(0.674 0.2144 356.6); /* #f54c99 */
+  --color-pink-600: oklch(0.616 0.2167 358.2); /* #e23484 */
+  --color-pink-700: oklch(0.534 0.1971 358.7); /* #be216b */
+  --color-pink-800: oklch(0.453 0.1654 357.7); /* #971a56 */
+  --color-pink-900: oklch(0.368 0.1311 356.4); /* #701441 */
+  --color-pink-950: oklch(0.266 0.0930 354.6); /* #450a28 */
+
+  /* ========================================
+   * Primitive Tokens - Rose (Error)
+   * ======================================== */
+  --color-rose-50: oklch(0.978 0.0110 3.5);    /* #fff5f7 */
+  --color-rose-100: oklch(0.959 0.0208 10.2);  /* #ffecee */
+  --color-rose-200: oklch(0.906 0.0501 7.4);   /* #ffd3da */
+  --color-rose-300: oklch(0.821 0.1043 6.9);   /* #ffa8b9 */
+  --color-rose-400: oklch(0.718 0.1675 9.9);   /* #f9718c */
+  --color-rose-500: oklch(0.649 0.1937 12.8);  /* #ec4e6d */
+  --color-rose-600: oklch(0.583 0.2055 14.4);  /* #d92d54 */
+  --color-rose-700: oklch(0.499 0.1786 13.9);  /* #b12043 */
+  --color-rose-800: oklch(0.423 0.1482 13.0);  /* #8c1a36 */
+  --color-rose-900: oklch(0.344 0.1177 12.2);  /* #681328 */
+  --color-rose-950: oklch(0.248 0.0810 11.3);  /* #3f0a17 */
+
+  /* ========================================
+   * Primitive Tokens - Gray (Light Mode)
+   * ======================================== */
+  --color-gray-50: oklch(0.975 0.0080 286.3);  /* #f6f6fc */
+  --color-gray-100: oklch(0.943 0.0134 286.1); /* #ebebf5 */
+  --color-gray-200: oklch(0.907 0.0162 286.1); /* #dfdfeb */
+  --color-gray-300: oklch(0.866 0.0206 289.0); /* #d2d1e0 */
+  --color-gray-400: oklch(0.784 0.0169 289.8); /* #b8b7c3 */
+  --color-gray-500: oklch(0.688 0.0175 293.6); /* #9b99a5 */
+  --color-gray-600: oklch(0.577 0.0123 297.4); /* #7a7880 */
+  --color-gray-700: oklch(0.465 0.0177 289.9); /* #595863 */
+  --color-gray-800: oklch(0.341 0.0156 290.6); /* #383740 */
+  --color-gray-900: oklch(0.241 0.0076 285.8); /* #1f1f23 */
+  --color-gray-950: oklch(0.174 0.0061 285.7); /* #101013 */
+
+  /* ========================================
+   * Primitive Tokens - Gray (Dark Mode)
+   * ======================================== */
+  --color-gray-dark-50: oklch(0.181 0.0143 284.9);  /* #111118 */
+  --color-gray-dark-100: oklch(0.235 0.0153 290.9); /* #1e1d25 */
+  --color-gray-dark-200: oklch(0.327 0.0228 288.6); /* #343340 */
+  --color-gray-dark-300: oklch(0.397 0.0185 293.9); /* #474550 */
+  --color-gray-dark-400: oklch(0.496 0.0174 285.8); /* #61616c */
+  --color-gray-dark-500: oklch(0.588 0.0140 301.1); /* #7e7b84 */
+  --color-gray-dark-600: oklch(0.696 0.0089 301.3); /* #9e9ca2 */
+  --color-gray-dark-700: oklch(0.800 0.0169 293.7); /* #bebcc8 */
+  --color-gray-dark-800: oklch(0.855 0.0027 286.3); /* #cfcfd1 */
+  --color-gray-dark-900: oklch(0.903 0.0108 286.2); /* #dedee6 */
+  --color-gray-dark-950: oklch(0.954 0.0093 286.2); /* #efeff6 */
+
+  /* ========================================
+   * Primitive Tokens - Gray (Primary Dark)
+   * ======================================== */
+  --color-primary-dark-50: oklch(0.181 0.0143 284.9);  /* #111118 */
+  --color-primary-dark-100: oklch(0.235 0.0153 290.9); /* #1e1d25 */
+  --color-primary-dark-200: oklch(0.327 0.0228 288.6); /* #343340 */
+  --color-primary-dark-300: oklch(0.397 0.0185 293.9); /* #474550 */
+  --color-primary-dark-400: oklch(0.496 0.0174 285.8); /* #61616c */
+  --color-primary-dark-500: oklch(0.588 0.0140 301.1); /* #7e7b84 */
+  --color-primary-dark-600: oklch(0.696 0.0089 301.3); /* #9e9ca2 */
+  --color-primary-dark-700: oklch(0.800 0.0169 293.7); /* #bebcc8 */
+  --color-primary-dark-800: oklch(0.855 0.0027 286.3); /* #cfcfd1 */
+  --color-primary-dark-900: oklch(0.903 0.0108 286.2); /* #dedee6 */
+  --color-primary-dark-950: oklch(0.954 0.0093 286.2); /* #efeff6 */
+
+  /* ========================================
+   * Primitive Tokens - Brand-Blue (Dark Mode)
+   * ======================================== */
+  --color-blue-dark-50: oklch(0.273 0.1058 265.2);  /* #0d215a */
+  --color-blue-dark-100: oklch(0.369 0.1542 264.0); /* #12358f */
+  --color-blue-dark-200: oklch(0.422 0.1999 264.1); /* #103cb8 */
+  --color-blue-dark-300: oklch(0.483 0.2266 263.2); /* #0d4bdb */
+  --color-blue-dark-400: oklch(0.562 0.2412 262.2); /* #1664ff */
+  --color-blue-dark-500: oklch(0.608 0.2128 261.1); /* #2f79ff */
+  --color-blue-dark-600: oklch(0.694 0.1611 259.5); /* #5d9bff */
+  --color-blue-dark-700: oklch(0.815 0.0929 259.6); /* #9fc4ff */
+  --color-blue-dark-800: oklch(0.904 0.0464 262.5); /* #cfe0ff */
+  --color-blue-dark-900: oklch(0.959 0.0195 260.2); /* #eaf2ff */
+  --color-blue-dark-950: oklch(0.977 0.0108 256.7); /* #f3f8ff */
+
+  /* ========================================
+   * Primitive Tokens - Purple (Dark Mode)
+   * ======================================== */
+  --color-purple-dark-50: oklch(0.217 0.0882 284.8);  /* #180f40 */
+  --color-purple-dark-100: oklch(0.298 0.1218 282.3); /* #281e67 */
+  --color-purple-dark-200: oklch(0.379 0.1623 280.5); /* #382c94 */
+  --color-purple-dark-300: oklch(0.460 0.2029 279.4); /* #493bc4 */
+  --color-purple-dark-400: oklch(0.546 0.2381 278.7); /* #5c4ef5 */
+  --color-purple-dark-500: oklch(0.596 0.2257 280.8); /* #6e61ff */
+  --color-purple-dark-600: oklch(0.619 0.2151 284.9); /* #7e68ff */
+  --color-purple-dark-700: oklch(0.696 0.1714 289.6); /* #9d87ff */
+  --color-purple-dark-800: oklch(0.794 0.1142 292.7); /* #beaeff */
+  --color-purple-dark-900: oklch(0.891 0.0592 294.8); /* #ddd4ff */
+  --color-purple-dark-950: oklch(0.950 0.0272 297.3); /* #f0ebff */
+
+  /* ========================================
+   * Primitive Tokens - Cyan (Dark Mode)
+   * ======================================== */
+  --color-cyan-dark-50: oklch(0.310 0.0592 225.9);  /* #003647 */
+  --color-cyan-dark-100: oklch(0.414 0.0821 229.6); /* #00536f */
+  --color-cyan-dark-200: oklch(0.516 0.1059 232.5); /* #00719a */
+  --color-cyan-dark-300: oklch(0.617 0.1255 231.8); /* #0091c3 */
+  --color-cyan-dark-400: oklch(0.710 0.1432 231.0); /* #00b0ea */
+  --color-cyan-dark-500: oklch(0.771 0.1446 223.9); /* #00c7f8 */
+  --color-cyan-dark-600: oklch(0.811 0.1405 215.5); /* #1ad7fa */
+  --color-cyan-dark-700: oklch(0.851 0.1282 212.2); /* #4fe4ff */
+  --color-cyan-dark-800: oklch(0.898 0.0934 209.3); /* #8fefff */
+  --color-cyan-dark-900: oklch(0.945 0.0501 208.8); /* #c7f7ff */
+  --color-cyan-dark-950: oklch(0.977 0.0223 207.1); /* #e7fcff */
+
+  /* ========================================
+   * Primitive Tokens - Yellow (Dark Mode)
+   * ======================================== */
+  --color-yellow-dark-50: oklch(0.260 0.0532 87.4);  /* #2f2200 */
+  --color-yellow-dark-100: oklch(0.361 0.0738 86.8); /* #4e3a00 */
+  --color-yellow-dark-200: oklch(0.449 0.0919 85.2); /* #6c5000 */
+  --color-yellow-dark-300: oklch(0.545 0.1119 83.5); /* #8f6900 */
+  --color-yellow-dark-400: oklch(0.650 0.1334 84.3); /* #b58700 */
+  --color-yellow-dark-500: oklch(0.707 0.1438 85.2); /* #c99806 */
+  --color-yellow-dark-600: oklch(0.774 0.1557 87.8); /* #dfae10 */
+  --color-yellow-dark-700: oklch(0.839 0.1662 92.7); /* #f0c61f */
+  --color-yellow-dark-800: oklch(0.894 0.1526 97.4); /* #f8dc56 */
+  --color-yellow-dark-900: oklch(0.943 0.1109 99.3); /* #feee95 */
+  --color-yellow-dark-950: oklch(0.987 0.0227 96.0); /* #fffbea */
+
+  /* ========================================
+   * Primitive Tokens - Red (Dark Mode)
+   * ======================================== */
+  --color-red-dark-50: oklch(0.216 0.0718 25.5);  /* #340707 */
+  --color-red-dark-100: oklch(0.299 0.1058 26.5); /* #570d0d */
+  --color-red-dark-200: oklch(0.382 0.1404 27.8); /* #7d1311 */
+  --color-red-dark-300: oklch(0.473 0.1784 28.6); /* #a91914 */
+  --color-red-dark-400: oklch(0.565 0.2162 29.0); /* #d82018 */
+  --color-red-dark-500: oklch(0.612 0.2061 28.3); /* #e53d33 */
+  --color-red-dark-600: oklch(0.659 0.1954 27.1); /* #f2544b */
+  --color-red-dark-700: oklch(0.733 0.1637 25.4); /* #ff7a72 */
+  --color-red-dark-800: oklch(0.809 0.1079 24.6); /* #ffa59e */
+  --color-red-dark-900: oklch(0.902 0.0510 22.6); /* #ffd2cf */
+  --color-red-dark-950: oklch(0.958 0.0209 24.8); /* #ffecea */
+
+  /* ========================================
+   * Primitive Tokens - Orange (Dark Mode)
+   * ======================================== */
+  --color-orange-dark-50: oklch(0.287 0.0688 57.7);  /* #432000 */
+  --color-orange-dark-100: oklch(0.400 0.0976 56.3); /* #6e3700 */
+  --color-orange-dark-200: oklch(0.508 0.1269 54.2); /* #9b4d00 */
+  --color-orange-dark-300: oklch(0.611 0.1556 52.7); /* #c96300 */
+  --color-orange-dark-400: oklch(0.723 0.1897 50.5); /* #ff7a00 */
+  --color-orange-dark-500: oklch(0.742 0.1794 54.2); /* #ff8618 */
+  --color-orange-dark-600: oklch(0.748 0.1751 55.0); /* #ff8a22 */
+  --color-orange-dark-700: oklch(0.790 0.1478 59.3); /* #ffa14e */
+  --color-orange-dark-800: oklch(0.841 0.1075 59.7); /* #ffba82 */
+  --color-orange-dark-900: oklch(0.907 0.0608 61.3); /* #ffd8b8 */
+  --color-orange-dark-950: oklch(0.964 0.0219 58.8); /* #fff0e5 */
+
+  /* ========================================
+   * Primitive Tokens - Green (Dark Mode)
+   * ======================================== */
+  --color-green-dark-50: oklch(0.242 0.0558 152.5);  /* #052712 */
+  --color-green-dark-100: oklch(0.334 0.0838 150.5); /* #09421e */
+  --color-green-dark-200: oklch(0.424 0.1091 150.4); /* #0d5e2c */
+  --color-green-dark-300: oklch(0.520 0.1391 149.4); /* #117e39 */
+  --color-green-dark-400: oklch(0.627 0.1699 149.2); /* #16a34a */
+  --color-green-dark-500: oklch(0.682 0.1703 150.3); /* #2db55d */
+  --color-green-dark-600: oklch(0.701 0.1686 150.5); /* #37bb64 */
+  --color-green-dark-700: oklch(0.769 0.1442 152.4); /* #62ce86 */
+  --color-green-dark-800: oklch(0.844 0.1025 154.5); /* #95e0ae */
+  --color-green-dark-900: oklch(0.916 0.0553 155.6); /* #c7efd4 */
+  --color-green-dark-950: oklch(0.965 0.0214 158.6); /* #e8f8ee */
+
+  /* ========================================
+   * Primitive Tokens - Teal (Dark Mode)
+   * ======================================== */
+  --color-teal-dark-50: oklch(0.248 0.0388 186.6);  /* #052724 */
+  --color-teal-dark-100: oklch(0.333 0.0544 185.6); /* #083f3a */
+  --color-teal-dark-200: oklch(0.419 0.0705 185.4); /* #0a5952 */
+  --color-teal-dark-300: oklch(0.507 0.0865 185.3); /* #0c756c */
+  --color-teal-dark-400: oklch(0.600 0.1038 184.7); /* #0d9488 */
+  --color-teal-dark-500: oklch(0.656 0.1130 183.5); /* #16a798 */
+  --color-teal-dark-600: oklch(0.725 0.1185 184.4); /* #2ebeaf */
+  --color-teal-dark-700: oklch(0.804 0.1091 184.9); /* #5fd6c8 */
+  --color-teal-dark-800: oklch(0.876 0.0809 185.1); /* #97e8dd */
+  --color-teal-dark-900: oklch(0.935 0.0459 186.3); /* #c8f4ee */
+  --color-teal-dark-950: oklch(0.972 0.0223 186.5); /* #e6fbf8 */
+
+  /* ========================================
+   * Primitive Tokens - Moss (Dark Mode)
+   * ======================================== */
+  --color-moss-dark-50: oklch(0.255 0.0521 125.1);  /* #1d2708 */
+  --color-moss-dark-100: oklch(0.347 0.0748 124.7); /* #31400e */
+  --color-moss-dark-200: oklch(0.422 0.0931 125.0); /* #425614 */
+  --color-moss-dark-300: oklch(0.501 0.1135 124.8); /* #556e18 */
+  --color-moss-dark-400: oklch(0.589 0.1346 124.9); /* #6b8a1f */
+  --color-moss-dark-500: oklch(0.622 0.1435 125.1); /* #739521 */
+  --color-moss-dark-600: oklch(0.688 0.1496 124.9); /* #86aa33 */
+  --color-moss-dark-700: oklch(0.769 0.1322 123.7); /* #a3c25e */
+  --color-moss-dark-800: oklch(0.850 0.0980 123.5); /* #c1d991 */
+  --color-moss-dark-900: oklch(0.921 0.0565 123.9); /* #ddecc3 */
+  --color-moss-dark-950: oklch(0.968 0.0208 124.7); /* #f1f7e8 */
+
+  /* ========================================
+   * Primitive Tokens - Pink (Dark Mode)
+   * ======================================== */
+  --color-pink-dark-50: oklch(0.255 0.0844 357.5);  /* #400b23 */
+  --color-pink-dark-100: oklch(0.351 0.1216 357.5); /* #68143b */
+  --color-pink-dark-200: oklch(0.439 0.1547 357.9); /* #8f1d52 */
+  --color-pink-dark-300: oklch(0.524 0.1877 358.2); /* #b72569 */
+  --color-pink-dark-400: oklch(0.616 0.2167 358.2); /* #e23484 */
+  --color-pink-dark-500: oklch(0.674 0.2144 356.6); /* #f54c99 */
+  --color-pink-dark-600: oklch(0.709 0.2113 354.1); /* #ff5baa */
+  --color-pink-dark-700: oklch(0.768 0.1632 350.6); /* #ff84c1 */
+  --color-pink-dark-800: oklch(0.842 0.1060 347.5); /* #ffafd8 */
+  --color-pink-dark-900: oklch(0.921 0.0503 345.8); /* #ffd8ec */
+  --color-pink-dark-950: oklch(0.969 0.0185 347.4); /* #fff0f7 */
+
+  /* ========================================
+   * Primitive Tokens - Rose (Dark Mode)
+   * ======================================== */
+  --color-rose-dark-50: oklch(0.241 0.0774 11.3);  /* #3c0a16 */
+  --color-rose-dark-100: oklch(0.334 0.1123 12.5); /* #631326 */
+  --color-rose-dark-200: oklch(0.414 0.1423 13.4); /* #871b34 */
+  --color-rose-dark-300: oklch(0.495 0.1735 14.0); /* #ae2343 */
+  --color-rose-dark-400: oklch(0.583 0.2055 14.4); /* #d92d54 */
+  --color-rose-dark-500: oklch(0.649 0.1937 12.8); /* #ec4e6d */
+  --color-rose-dark-600: oklch(0.687 0.1911 7.9);  /* #f75c84 */
+  --color-rose-dark-700: oklch(0.760 0.1504 5.7);  /* #ff85a3 */
+  --color-rose-dark-800: oklch(0.838 0.0949 3.6);  /* #ffb0c3 */
+  --color-rose-dark-900: oklch(0.918 0.0449 2.5);  /* #ffd8e1 */
+  --color-rose-dark-950: oklch(0.968 0.0170 359.3); /* #fff0f4 */
+
+  /* ========================================
+   * Primitive Tokens - White
+   * ======================================== */
+  --color-white: oklch(1 0 0);  /* #ffffff */
+
+  /* ========================================
+   * Semantic Alias - Status Palettes
+   * 文档中的功能色引用 success/warning/danger/info，
+   * 这里通过 alias 指向具体品牌色板。
+   * ======================================== */
+  --color-success-50: var(--color-green-50);
+  --color-success-100: var(--color-green-100);
+  --color-success-200: var(--color-green-200);
+  --color-success-300: var(--color-green-300);
+  --color-success-400: var(--color-green-400);
+  --color-success-500: var(--color-green-500);
+  --color-success-600: var(--color-green-600);
+  --color-success-700: var(--color-green-700);
+  --color-success-800: var(--color-green-800);
+  --color-success-900: var(--color-green-900);
+  --color-success-950: var(--color-green-950);
+
+  --color-warning-50: var(--color-orange-50);
+  --color-warning-100: var(--color-orange-100);
+  --color-warning-200: var(--color-orange-200);
+  --color-warning-300: var(--color-orange-300);
+  --color-warning-400: var(--color-orange-400);
+  --color-warning-500: var(--color-orange-500);
+  --color-warning-600: var(--color-orange-600);
+  --color-warning-700: var(--color-orange-700);
+  --color-warning-800: var(--color-orange-800);
+  --color-warning-900: var(--color-orange-900);
+  --color-warning-950: var(--color-orange-950);
+
+  --color-danger-50: var(--color-rose-50);
+  --color-danger-100: var(--color-rose-100);
+  --color-danger-200: var(--color-rose-200);
+  --color-danger-300: var(--color-rose-300);
+  --color-danger-400: var(--color-rose-400);
+  --color-danger-500: var(--color-rose-500);
+  --color-danger-600: var(--color-rose-600);
+  --color-danger-700: var(--color-rose-700);
+  --color-danger-800: var(--color-rose-800);
+  --color-danger-900: var(--color-rose-900);
+  --color-danger-950: var(--color-rose-950);
+
+  --color-info-50: var(--color-blue-50);
+  --color-info-100: var(--color-blue-100);
+  --color-info-200: var(--color-blue-200);
+  --color-info-300: var(--color-blue-300);
+  --color-info-400: var(--color-blue-400);
+  --color-info-500: var(--color-blue-500);
+  --color-info-600: var(--color-blue-600);
+  --color-info-700: var(--color-blue-700);
+  --color-info-800: var(--color-blue-800);
+  --color-info-900: var(--color-blue-900);
+  --color-info-950: var(--color-blue-950);
+
+  /* ========================================
+   * Semantic Tokens - Background
+   * ======================================== */
+  --color-bg-base: var(--color-white);                /* 页面根背景、应用主画布等基础容器场景、input组件等基础组件背景 */
+  --color-bg-surface: var(--color-gray-50);           /* sidebar、对话气泡、表格行hover、Skeleton、日志/工具调用面板等承载型背景 */
+  --color-bg-overlay: var(--color-white);             /* header、Popover、Dropdown、Modal、Drawer、命令面板等浮层容器 */
+  --color-bg-muted: var(--color-gray-100);            /* sidebar选中、Avatart、表头 等弱强调背景 */
+  --color-bg-control: var(--color-gray-100);          /* 待定 */ 
+  --color-bg-inverse: var(--color-gray-950);          /* 需要与浅色容器形成反差的反色背景，如 Tooltip */
+  --color-bg-primary: var(--color-primary-600);       /* 主按钮、关键确认操作等背景色 */
+  --color-bg-secondary: var(--color-primary-50);         /* 次按钮、模版示例背景、低强调交互控件的默认背景 */
+ 
+  /* ========================================
+   * Semantic Tokens - Text & Icon
+   * ======================================== */
+  --color-text-primary: var(--color-gray-950);          /* 标题、正文、段落、列表项、浅色按钮等主要文字 */
+  --color-text-secondary: var(--color-gray-800);        /* 描述和辅助信息 */
+  --color-text-tertiary: var(--color-gray-600);         /* Input/Composer 占位、Sidebar 分组标题、Stepper 待办态等弱提示 */
+  --color-text-disable: var(--color-primary-400);       /* 禁用按钮、禁用输入、禁用菜单等不可操作状态 */
+  --color-text-foreground: var(--color-white);          /* Tooltip、button等深色背景组件中的反色文字 */
+  --color-text-accent: var(--color-primary-600);        /* 链接颜色 */
+
+  --color-icon-primary: var(--color-text-secondary);    /* 主要 icon：导航图标、操作图标等，与辅助文字同层级 */
+  --color-icon-secondary: var(--color-text-tertiary);   /* 辅助 icon：占位图标、弱提示图标等，与弱提示文字同层级 */
+  --color-icon-disable: var(--color-text-disable);      /* 禁用 icon */
+  --color-icon-foreground: var(--color-text-foreground);/* 深色背景上的反色 icon */
+  --color-icon-accent: var(--color-text-accent);        /* 强调/可交互 icon */
+
+   /* ========================================
+   * Semantic Tokens - Border
+   * ======================================== */
+  --color-border-default: var(--color-gray-300);              /* 结构分隔 */
+  --color-border-strong: var(--color-gray-400);               /* 增强识别 */
+  --color-border-interactive: var(--color-primary-600);       /* 可交互组件 hover 描边 */
+  --color-border-interactive-active: var(--color-primary-700); /* 可交互组件 active 描边 */
+
+
+  /* ========================================
+   * Status Feedback Tokens - Text
+   * ======================================== */
+  --color-text-success: var(--color-success-900);        /* 成功态标签文本、日志成功信息、任务完成状态 */
+  --color-text-warning: var(--color-warning-900);        /* 警告标签、风险提示文案、需关注状态说明 */
+  --color-text-danger: var(--color-danger-900);          /* 错误态文本、异常日志、删除/停止等危险操作提示 */
+  --color-text-info: var(--color-info-900);              /* 系统消息、说明性提示、信息通知 */
+  /* risk level */
+  --color-text-risk-1: var(--color-danger-900);          /* 严重风险等级文本 */
+  --color-text-risk-2: var(--color-danger-900);          /* 高危风险等级文本 */
+  --color-text-risk-3: var(--color-warning-900);         /* 中危风险等级文本 */
+  --color-text-risk-4: var(--color-yellow-900);          /* 低危风险等级文本 */
+  /* safety state */
+  --color-text-safe: var(--color-success-900);           /* 无风险,同 success */
+  --color-text-tip: var(--color-info-900);               /* 提示,同 info */
+  --color-text-unknown: var(--color-gray-900);           /* 未知,同 gray */
+
+  /* ========================================
+   * Status Feedback Tokens - Background
+   * ======================================== */
+  --color-bg-success: var(--color-success-50);         /* 成功态 Tag、Alert、Toast、完成反馈容器 */
+  --color-bg-warning: var(--color-warning-50);         /* 警告态 Tag、风险提醒条、待处理提示容器 */
+  --color-bg-danger: var(--color-danger-50);           /* 错误状态卡、危险态通知、失败反馈容器 */
+  --color-bg-info: var(--color-info-50);               /* 系统提示气泡、说明卡片、信息通知容器 */
+  /* risk level */
+  --color-bg-risk-1: var(--color-danger-50);           /* 严重风险等级容器 */
+  --color-bg-risk-2: var(--color-danger-50);           /* 高危风险等级容器 */
+  --color-bg-risk-3: var(--color-warning-50);          /* 中危风险等级容器 */
+  --color-bg-risk-4: var(--color-yellow-50);           /* 低危风险等级容器 */
+  /* safety state */
+  --color-bg-safe: var(--color-success-50);            /* 无风险容器,同 success */
+  --color-bg-tip: var(--color-info-50);                /* 提示容器,同 info */
+  --color-bg-unknown: var(--color-gray-50);            /* 未知状态容器,同 gray */
+
+
+
+  /* ========================================
+   * Interaction State Rules (Recipe Tokens)
+   * 配方型 Token：只存储混合参数，由组件层负责 color-mix 计算
+   * ======================================== */
+  --state-hover-solid-ratio: 90%;                         /* 深色按钮hover */
+  --state-hover-solid-mix: var(--color-white);            /* 深色按钮hover */
+  --state-pressed-solid-ratio: 95%;                       /* 深色按钮press */
+  --state-pressed-solid-mix: var(--color-gray-900);       /* 深色按钮press */
+
+  --state-hover-subtle-ratio: 97%;                        /* 浅色按钮hover */
+  --state-hover-subtle-mix: var(--color-gray-900);        /* 浅色按钮hover */
+  --state-pressed-subtle-ratio: 95%;                      /* 浅色按钮press */
+  --state-pressed-subtle-mix: var(--color-gray-900);      /* 浅色按钮press */
+  
+  --state-disabled-ratio: 40%;                            /* disabled状态 */
+ 
+
+
+  /* ========================================
+   * Spacing Tokens
+   * 8-level scale from 4px to 40px
+   * ======================================== */
+  --space-xxxs: 4px;  /* 微间距：图标与文字、Tag 内边距、细节对齐 */
+  --space-xxs: 8px;   /* 小间距：按钮左右 padding、小组件间距、列表紧凑布局 */
+  --space-xs: 12px;   /* 常用小间距：表单项间距、卡片内边距（紧凑） */
+  --space-s: 16px;    /* 基础间距：模块间距、卡片内边距（默认）、栅格 gutter */
+  --space-m: 20px;    /* 中间距：区块分隔、侧边栏/内容区的内边距（舒适） */
+  --space-l: 24px;    /* 大间距：页面 section 间距、弹层内容 padding */
+  --space-xl: 32px;   /* 更大间距：页面主区块之间、空状态/引导页布局 */
+  --space-xxl: 40px;  /* 最大间距：大页面留白、顶级容器 padding、落地页布局 */
+  
+
+  /* ========================================
+   * Typography Tokens
+   * 中文: PingFang SC | 英文: SF Pro Display | 等宽: Geist Mono
+   * ======================================== */
+  /* Font Families */
+  --font-cn: 'PingFang SC', -apple-system, 'Noto Sans SC', 'Microsoft YaHei', sans-serif;  /* 中文界面：页面正文、卡片内容、导航菜单、表单标签等中文内容 */
+  --font-en: 'SF Pro Display', 'SF Pro Icons', 'Geist', 'Geist Fallback', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* 英文/数字：仪表盘数据、版本号、API 文档、纯英文段落 */
+  --font-mono: 'Geist Mono', 'SF Mono', 'Fira Code', ui-monospace, monospace;             /* 等宽字体：代码块、日志输出、JSON 数据、终端命令、文件路径 */
+  --font-sans: var(--font-cn);  /* 默认使用中文字体栈：全局 body 字体，确保中文优先渲染 */
+
+  /* Font Sizes - Semantic */
+  --text-page-title: 36px;            /* 页面主标题 / Hero */
+  --text-page-title-secondary: 32px;  /* 页面二级主标题 */
+  --text-panel-title-lg: 30px;        /* 大面板标题 */
+  --text-dialog-title: 24px;          /* 弹窗 / 区块主标题 */
+  --text-section-title: 20px;         /* 区块标题 */
+  --text-subsection-title: 18px;      /* 分组标题 / 副标题 */
+  --text-ui-strong: 16px;             /* 按钮 / 表头 / 强调正文 */
+  --text-body: 14px;                  /* 正文默认 */
+  --text-body-sm: 13px;               /* 次级 / 辅助正文 */
+  --text-caption: 12px;               /* 注释 / 时间戳 / Caption */
+
+  /* Font Weights */
+  --font-weight-normal: 400;           /* 正文/说明文本 */
+  --font-weight-medium: 500;           /* 按钮/Tab/强调正文 */
+  --font-weight-semibold: 600;         /* 标题/表头/关键数值 */
+  --font-weight-bold: 700;             /* 强强调：仅用于少量关键标题或品牌语 */
+
+  /* Line Heights */
+  --line-height-display: 1.2;            /* 展示级标题：更紧凑，适合短标题 */
+  --line-height-display-1: 1.3;          /* 展示级标题：多行标题可读性更好 */
+  --line-height-title: 1.4;              /* 标题：兼顾密度与可读性 */
+  --line-height-body: 1.5;               /* 正文：默认阅读行高 */
+  --line-height-mono: 1.6;               /* 等宽：代码/日志/数据列，提升可扫读性 */
+
+  /* Letter Spacing */
+  --letter-spacing-display-3: -0.03em;   /* 大标题：收紧字距，增强视觉张力 */
+  --letter-spacing-display-2: -0.02em;   /* 标题：轻微收紧 */
+  --letter-spacing-display-1: -0.01em;   /* 标题/强调：极轻微收紧 */
+  --letter-spacing-normal: 0;            /* 正文/默认 */
+
+
+  /* ========================================
+   * Radius Tokens
+   * Base: 8px (0.5rem) - Agent Design 默认
+   * ======================================== */
+  --radius-xs: 4px;             /* Tag/Badge、缩略图、次级小控件等轻量场景 */
+  --radius-sm: 6px;             /* 小尺寸按钮，mini输入框 */
+  --radius-md: 8px;             /* base输入框、base按钮、卡片、下拉/弹层面板等通用控件等基础组件 */
+  --radius-lg: 12px;            /* 大卡片、Popover/Dropdown、信息面板等承载型容器 */
+  --radius-xl: 16px;            /* Modal/Drawer、主内容面板等大面积容器 */
+  --radius-2xl: 20px;           /* chatbot input输入框、搜索框等大圆角输入容器 */
+  --radius-full: 99px;          /* pill 按钮、Chip、胶囊形输入框等 */
+
+  /* ========================================
+   * Stroke Tokens
+   * Base rule: 0.5px is the default border baseline.
+   * ======================================== */
+  --stroke-0_5: 0.5px;   /* 默认描边，适用于输入框、按钮、卡片、标签、弱分隔等大多数常规场景。 */
+  --stroke-1: 1px;       /* 增强描边，适用于需要更稳定识别的边框或分割线场景。 */
+  --stroke-2: 2px;       /* Focus 描边，适用于选中态、focus ring、当前态高亮等交互强调场景。 */ 
+
+  /* Stroke weight aliases (preferred for readability; keep numeric tokens for compatibility) */
+  --stroke-weight-base: var(--stroke-0_5);
+  --stroke-weight-strong: var(--stroke-1);
+  --stroke-weight-bold: var(--stroke-2);
+
+  /* ========================================
+   * Shadow Tokens (Light Mode)
+   * Color: rgba(0, 0, 0, alpha)
+   * ======================================== */
+  --shadow-sm: 0 1px 3px -1px rgba(16, 16, 19, 0.08),
+               0 1px 8px 0 rgba(16, 16, 19, 0.05); /* 小层级：下拉菜单 */
+  --shadow-md: 0 2px 4px -2px rgba(16, 16, 19, 0.05),
+               0 4px 26px -1px rgba(16, 16, 19, 0.05); /* 高层级：alert、message、chatinput、tooltip、popover、气泡卡片 */
+  --shadow-lg: 0 8px 10px -2px rgba(16, 16, 19, 0.05),
+               0 20px 25px -3px rgba(16, 16, 19, 0.05); /* 顶层强调：抽屉、弹窗 */
+
+  /* ========================================
+   * Motion Tokens
+   * 时长 + 缓动；不分 light/dark
+   * ======================================== */
+  --motion-fast: 150ms;                                 /* 微交互：按钮按压、checkbox/radio 切换、hover 高亮、color shift */
+  --motion-base: 250ms;                                 /* 状态切换：菜单展开、tooltip、tab、dropdown */
+  --motion-slow: 400ms;                                 /* 布局变化：accordion、modal、drawer、popover 显隐 */
+
+  --ease-enter:    cubic-bezier(0.16, 1, 0.3, 1);       /* 元素进入（出现/展开） */
+  --ease-exit:     cubic-bezier(0.7, 0, 0.84, 0);       /* 元素退出（消失/收起） */
+  --ease-standard: cubic-bezier(0.65, 0, 0.35, 1);      /* 双向切换（toggle、tab、状态翻转） */               
+}
+
+
+/* =============================================
+ * Dark Mode
+ * 暗色模式语义层：覆写 :root 中的语义 Token，
+ * 将引用从亮色 primitive 切换到暗色 primitive。
+ * ============================================= */
+.dark {
+
+  /* ========================================
+   * Semantic Alias - Status Palettes (Dark)
+   * ======================================== */
+  --color-success-50: var(--color-green-dark-50);
+  --color-success-100: var(--color-green-dark-100);
+  --color-success-200: var(--color-green-dark-200);
+  --color-success-300: var(--color-green-dark-300);
+  --color-success-400: var(--color-green-dark-400);
+  --color-success-500: var(--color-green-dark-500);
+  --color-success-600: var(--color-green-dark-600);
+  --color-success-700: var(--color-green-dark-700);
+  --color-success-800: var(--color-green-dark-800);
+  --color-success-900: var(--color-green-dark-900);
+  --color-success-950: var(--color-green-dark-950);
+
+  --color-warning-50: var(--color-orange-dark-50);
+  --color-warning-100: var(--color-orange-dark-100);
+  --color-warning-200: var(--color-orange-dark-200);
+  --color-warning-300: var(--color-orange-dark-300);
+  --color-warning-400: var(--color-orange-dark-400);
+  --color-warning-500: var(--color-orange-dark-500);
+  --color-warning-600: var(--color-orange-dark-600);
+  --color-warning-700: var(--color-orange-dark-700);
+  --color-warning-800: var(--color-orange-dark-800);
+  --color-warning-900: var(--color-orange-dark-900);
+  --color-warning-950: var(--color-orange-dark-950);
+
+  --color-danger-50: var(--color-rose-dark-50);
+  --color-danger-100: var(--color-rose-dark-100);
+  --color-danger-200: var(--color-rose-dark-200);
+  --color-danger-300: var(--color-rose-dark-300);
+  --color-danger-400: var(--color-rose-dark-400);
+  --color-danger-500: var(--color-rose-dark-500);
+  --color-danger-600: var(--color-rose-dark-600);
+  --color-danger-700: var(--color-rose-dark-700);
+  --color-danger-800: var(--color-rose-dark-800);
+  --color-danger-900: var(--color-rose-dark-900);
+  --color-danger-950: var(--color-rose-dark-950);
+
+  --color-info-50: var(--color-blue-dark-50);
+  --color-info-100: var(--color-blue-dark-100);
+  --color-info-200: var(--color-blue-dark-200);
+  --color-info-300: var(--color-blue-dark-300);
+  --color-info-400: var(--color-blue-dark-400);
+  --color-info-500: var(--color-blue-dark-500);
+  --color-info-600: var(--color-blue-dark-600);
+  --color-info-700: var(--color-blue-dark-700);
+  --color-info-800: var(--color-blue-dark-800);
+  --color-info-900: var(--color-blue-dark-900);
+  --color-info-950: var(--color-blue-dark-950);
+
+  /* ========================================
+   * Semantic Tokens - Background (Dark)
+   * ======================================== */
+  --color-bg-base: var(--color-gray-dark-50);             /* 页面根背景、应用主画布等基础容器场景、input组件等基础组件背景 */
+  --color-bg-surface: var(--color-gray-dark-100);         /* sidebar、对话气泡、表格行hover、Skeleton、日志/工具调用面板等承载型背景 */
+  --color-bg-overlay: var(--color-gray-dark-200);         /* header、Popover、Dropdown、Modal、Drawer、命令面板等浮层容器 */
+  --color-bg-muted: var(--color-gray-dark-200);           /* sidebar选中、Avatar、表头 等弱强调背景 */
+  --color-bg-control: var(--color-gray-dark-200);         /* 待定 */
+  --color-bg-inverse: var(--color-gray-dark-950);         /* 需要与暗色容器形成反差的反色背景，如 Tooltip */
+  --color-bg-primary: var(--color-primary-dark-600);      /* 主按钮、关键确认操作等背景色 */
+  --color-bg-secondary: var(--color-gray-dark-200);       /* 次按钮、模版示例背景、低强调交互控件的默认背景 */
+
+  /* ========================================
+   * Semantic Tokens - Text & Icon (Dark)
+   * ======================================== */
+  --color-text-primary: var(--color-gray-dark-950);       /* 标题、正文等主要文字 — 最浅色 */
+  --color-text-secondary: var(--color-gray-dark-800);     /* 描述和辅助信息 */
+  --color-text-tertiary: var(--color-gray-dark-600);      /* 占位、分组标题等弱提示 */
+  --color-text-disable: var(--color-primary-dark-400);    /* 禁用态文字 */
+  --color-text-foreground: var(--color-gray-dark-50);     /* 浅色按钮上的深色文字 */
+  --color-text-accent: var(--color-primary-dark-600);     /* 链接颜色 */
+
+  --color-icon-primary: var(--color-text-secondary);      /* 主要 icon：导航图标、操作图标等 */
+  --color-icon-secondary: var(--color-text-tertiary);     /* 辅助 icon：占位图标、弱提示图标等 */
+  --color-icon-disable: var(--color-text-disable);        /* 禁用 icon */
+  --color-icon-foreground: var(--color-text-foreground);  /* 深色背景上的反色 icon */
+  --color-icon-accent: var(--color-text-accent);          /* 强调/可交互 icon */
+
+  /* ========================================
+   * Semantic Tokens - Border (Dark)
+   * ======================================== */
+  --color-border-default: var(--color-gray-dark-300);              /* 结构分隔 */
+  --color-border-strong: var(--color-gray-dark-400);               /* 增强识别 */
+  --color-border-interactive: var(--color-primary-dark-600);       /* hover 描边 */
+  --color-border-interactive-active: var(--color-primary-dark-700); /* active 描边 */
+
+  /* ========================================
+   * Interaction State Rules (Dark)
+   * ======================================== */
+  --state-hover-solid-ratio: 90%;                         /* 浅色按钮 hover */
+  --state-hover-solid-mix: var(--color-gray-dark-50);     /* 混入深色 */
+  --state-pressed-solid-ratio: 95%;                       /* 浅色按钮 press */
+  --state-pressed-solid-mix: var(--color-gray-dark-50);   /* 混入深色 */
+
+  --state-hover-subtle-ratio: 97%;                        /* 深色表面 hover */
+  --state-hover-subtle-mix: var(--color-gray-dark-950);   /* 混入浅色 */
+  --state-pressed-subtle-ratio: 95%;                      /* 深色表面 press */
+  --state-pressed-subtle-mix: var(--color-gray-dark-950); /* 混入浅色 */
+
+  --state-disabled-ratio: 40%;                            /* disabled 状态 */
+
+  /* ========================================
+   * Status Feedback Tokens - Text (Dark)
+   * ======================================== */
+  --color-text-success: var(--color-success-900);         /* 成功态标签文本、日志成功信息、任务完成状态 */
+  --color-text-warning: var(--color-warning-900);         /* 警告标签、风险提示文案、需关注状态说明 */
+  --color-text-danger: var(--color-danger-900);           /* 错误态文本、异常日志、删除/停止等危险操作提示 */
+  --color-text-info: var(--color-info-900);               /* 系统消息、说明性提示、信息通知 */
+  /* risk level */
+  --color-text-risk-1: var(--color-danger-900);           /* 严重风险等级文本 */
+  --color-text-risk-2: var(--color-danger-900);           /* 高危风险等级文本 */
+  --color-text-risk-3: var(--color-warning-900);          /* 中危风险等级文本 */
+  --color-text-risk-4: var(--color-yellow-900);           /* 低危风险等级文本 */
+  /* safety state */
+  --color-text-safe: var(--color-success-900);            /* 无风险,同 success */
+  --color-text-tip: var(--color-info-900);                /* 提示,同 info */
+  --color-text-unknown: var(--color-gray-dark-900);       /* 未知,同 gray (Dark) */
+
+  /* ========================================
+   * Status Feedback Tokens - Background (Dark)
+   * ======================================== */
+  --color-bg-success: var(--color-success-50);            /* 成功态 Tag、Alert、Toast、完成反馈容器 */
+  --color-bg-warning: var(--color-warning-50);            /* 警告态 Tag、风险提醒条、待处理提示容器 */
+  --color-bg-danger: var(--color-danger-50);              /* 错误状态卡、危险态通知、失败反馈容器 */
+  --color-bg-info: var(--color-info-50);                  /* 系统提示气泡、说明卡片、信息通知容器 */
+  /* risk level */
+  --color-bg-risk-1: var(--color-danger-50);              /* 严重风险等级容器 */
+  --color-bg-risk-2: var(--color-danger-50);              /* 高危风险等级容器 */
+  --color-bg-risk-3: var(--color-warning-50);             /* 中危风险等级容器 */
+  --color-bg-risk-4: var(--color-yellow-50);              /* 低危风险等级容器 */
+  /* safety state */
+  --color-bg-safe: var(--color-success-50);               /* 无风险容器,同 success */
+  --color-bg-tip: var(--color-info-50);                   /* 提示容器,同 info */
+  --color-bg-unknown: var(--color-gray-dark-50);          /* 未知状态容器,同 gray (Dark) */
+
+  /* ========================================
+   * Shadow Tokens (Dark Mode)
+   * 透明度翻倍补偿暗色背景
+   * ======================================== */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.2),
+               0 1px 2px -1px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.2),
+               0 4px 6px -4px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.2),
+               0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ============================================================
+ * Theme Overrides — 主题覆盖段
+ *
+ * vedesign Agent skill 支持 5 套主题色:
+ *   - agent (默认,即上方 :root)  — gray / 中性 ToB
+ *   - arkclaw                    — 跟 agent 完全相同(占位,留未来扩展)
+ *   - security                   — blue / 信任蓝(安全 / 合规 / 风控)
+ *   - volcengine                 — blue / 火山蓝(火山引擎官网 / 公有云)
+ *   - volcark                    — purple-blue / AI 紫(火山方舟 / 大模型)
+ *
+ * 切换方式:在 <html> 上加 data-theme 属性,如:
+ *   <html data-theme="security">      → 亮色 + 安全主题
+ *   <html data-theme="volcark" class="dark"> → 暗色 + 火山方舟主题
+ *
+ * 默认(无 data-theme 属性)= agent 主题。data-theme="agent" 和 "arkclaw"
+ * 同样走 :root 默认值,无需额外覆盖段。
+ *
+ * 设计师维护:新增主题时,只需在本段追加一组 [data-theme="新名字"] 覆盖,
+ * 列出跟 agent 不同的 token 即可。其他 token 自动继承 :root。
+ * ============================================================ */
+
+
+/* === Theme: security (安全 / 合规 / 风控类) ===
+ * 安全产线 primary 跟 agent 一致(灰色色阶),无需覆盖 primary-*。
+ * 仅保留 disable 文字 token 的轻微调整。
+ */
+[data-theme="security"] {
+  --color-text-disable: var(--color-gray-400); /* 禁用按钮、禁用输入、禁用菜单等不可操作状态 */
+}
+
+[data-theme="security"].dark,
+.dark[data-theme="security"] {
+  --color-text-disable: var(--color-gray-dark-400); /* 禁用态文字 */
+}
+
+
+/* === Theme: volcengine (火山引擎官网 / 公有云控制台) === */
+[data-theme="volcengine"] {
+  --color-primary-50: oklch(0.977 0.0108 256.7);
+  --color-primary-100: oklch(0.959 0.0195 260.2);
+  --color-primary-200: oklch(0.904 0.0464 262.5);
+  --color-primary-300: oklch(0.815 0.0929 259.6);
+  --color-primary-400: oklch(0.694 0.1611 259.5);
+  --color-primary-500: oklch(0.608 0.2128 261.1);
+  --color-primary-600: oklch(0.562 0.2412 262.2);
+  --color-primary-700: oklch(0.483 0.2266 263.2);
+  --color-primary-800: oklch(0.422 0.1999 264.1);
+  --color-primary-900: oklch(0.369 0.1542 264.0);
+  --color-primary-950: oklch(0.273 0.1058 265.2);
+  --color-primary-dark-50: var(--color-blue-dark-50);
+  --color-primary-dark-100: var(--color-blue-dark-100);
+  --color-primary-dark-200: var(--color-blue-dark-200);
+  --color-primary-dark-300: var(--color-blue-dark-300);
+  --color-primary-dark-400: var(--color-blue-dark-400);
+  --color-primary-dark-500: var(--color-blue-dark-500);
+  --color-primary-dark-600: var(--color-blue-dark-600);
+  --color-primary-dark-700: var(--color-blue-dark-700);
+  --color-primary-dark-800: var(--color-blue-dark-800);
+  --color-primary-dark-900: var(--color-blue-dark-900);
+  --color-primary-dark-950: var(--color-blue-dark-950);
+  --color-text-disable: var(--color-gray-400); /* 禁用按钮、禁用输入、禁用菜单等不可操作状态 */
+}
+
+[data-theme="volcengine"].dark,
+.dark[data-theme="volcengine"] {
+  --color-text-disable: var(--color-gray-dark-400); /* 禁用态文字 */
+}
+
+
+/* === Theme: volcark (火山方舟 / Ark / 大模型平台) === */
+[data-theme="volcark"] {
+  --color-primary-50: oklch(0.921 0.0378 265.8);
+  --color-primary-100: oklch(0.903 0.0465 272.1);
+  --color-primary-200: oklch(0.849 0.0750 275.5);
+  --color-primary-300: oklch(0.759 0.1230 273.0);
+  --color-primary-400: oklch(0.638 0.1940 273.1);
+  --color-primary-500: oklch(0.554 0.2480 274.7);
+  --color-primary-600: oklch(0.508 0.2768 275.6);
+  --color-primary-700: oklch(0.429 0.2618 276.6);
+  --color-primary-800: oklch(0.375 0.2310 277.4);
+  --color-primary-900: oklch(0.314 0.1889 277.6);
+  --color-primary-950: oklch(0.224 0.1366 278.7);
+  --color-blue-50: oklch(0.921 0.0378 265.8); /* #D9E5FF */
+  --color-blue-100: oklch(0.903 0.0465 272.1); /* #D4DEFF */
+  --color-blue-200: oklch(0.849 0.0750 275.5); /* #BFCAFF */
+  --color-blue-300: oklch(0.759 0.1230 273.0); /* #97ABFF */
+  --color-blue-400: oklch(0.638 0.1940 273.1); /* #687CFF */
+  --color-blue-500: oklch(0.554 0.2480 274.7); /* #5252FF */
+  --color-blue-600: oklch(0.508 0.2768 275.6); /* #4B32FE */
+  --color-blue-700: oklch(0.429 0.2618 276.6); /* #3E08D9 */
+  --color-blue-800: oklch(0.375 0.2310 277.4); /* #3400B6 */
+  --color-blue-900: oklch(0.314 0.1889 277.6); /* #27058D */
+  --color-blue-950: oklch(0.224 0.1366 278.7); /* #160058 */
+  --color-primary-dark-50: var(--color-blue-dark-50);
+  --color-primary-dark-100: var(--color-blue-dark-100);
+  --color-primary-dark-200: var(--color-blue-dark-200);
+  --color-primary-dark-300: var(--color-blue-dark-300);
+  --color-primary-dark-400: var(--color-blue-dark-400);
+  --color-primary-dark-500: var(--color-blue-dark-500);
+  --color-primary-dark-600: var(--color-blue-dark-600);
+  --color-primary-dark-700: var(--color-blue-dark-700);
+  --color-primary-dark-800: var(--color-blue-dark-800);
+  --color-primary-dark-900: var(--color-blue-dark-900);
+  --color-primary-dark-950: var(--color-blue-dark-950);
+  --color-blue-dark-50: oklch(0.224 0.1366 278.7); /* #160058 */
+  --color-blue-dark-100: oklch(0.314 0.1889 277.6); /* #27058D */
+  --color-blue-dark-200: oklch(0.375 0.2310 277.4); /* #3400B6 */
+  --color-blue-dark-300: oklch(0.429 0.2618 276.6); /* #3E08D9 */
+  --color-blue-dark-400: oklch(0.508 0.2768 275.6); /* #4B32FE */
+  --color-blue-dark-500: oklch(0.554 0.2480 274.7); /* #5252FF */
+  --color-blue-dark-600: oklch(0.638 0.1940 273.1); /* #687CFF */
+  --color-blue-dark-700: oklch(0.759 0.1230 273.0); /* #97ABFF */
+  --color-blue-dark-800: oklch(0.849 0.0750 275.5); /* #BFCAFF */
+  --color-blue-dark-900: oklch(0.903 0.0465 272.1); /* #D4DEFF */
+  --color-blue-dark-950: oklch(0.921 0.0378 265.8); /* #D9E5FF */
+  --color-text-disable: var(--color-gray-400); /* 禁用按钮、禁用输入、禁用菜单等不可操作状态 */
+}
+
+[data-theme="volcark"].dark,
+.dark[data-theme="volcark"] {
+  --color-text-disable: var(--color-gray-dark-400); /* 禁用态文字 */
+}
+
+
+/* === Theme: arkclaw (跟 agent 完全相同,占位留扩展位) === */
+[data-theme="arkclaw"] {
+  /* 当前跟 agent 默认完全相同。未来差异化时在此处追加覆盖。 */
+}
